@@ -20,6 +20,7 @@ SECTIONS {
   .bss ALIGN (0x1000) : {
     /* uninitialized global and static variables */
     /* doesnt take up space for initial in the elf binary file and just 0 initiaizlies */
+    /* we use bss for stack memory since stack memory is always written to before reading and thus is ok with being uninitialized */
     *(COMMON)
     *(.bss)
   }
