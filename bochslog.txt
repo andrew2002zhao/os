@@ -44,45 +44,45 @@
 00000000000i[USBCTL] Pluggable USB devices
 00000000000i[USBCTL]   hub floppy mouse tablet keypad keyboard disk cdrom
 00000000000i[USBCTL]   printer
-00000000000i[MEM0  ] allocated memory at 0x7121f1c00010. after alignment, vector=0x7121f1c01000
+00000000000i[MEM0  ] allocated memory at 0x7da9edc00010. after alignment, vector=0x7da9edc01000
 00000000000i[MEM0  ] 32.00MB
 00000000000i[MEM0  ] mem block size = 0x00020000, blocks=256
 00000000000i[MEM0  ] rom at 0xffff0000/65536 ('/usr/share/bochs/BIOS-bochs-legacy')
 00000000000i[CPU0  ] WARNING: 3DNow! is not implemented yet !
 00000000000i[DEV   ] will paste characters every 100 iodev timer ticks
-00000000000i[      ] lt_dlhandle is 0x6050cc067d40
+00000000000i[      ] lt_dlhandle is 0x61f733472060
 00000000000i[PLUGIN] loaded plugin libbx_soundalsa.so
 00000000000i[WAVOUT] ALSA: opened default PCM output device
 00000000000i[WAVOUT] changed sample rate to 44101
-00000000000i[      ] lt_dlhandle is 0x6050cc89b7f0
+00000000000i[      ] lt_dlhandle is 0x61f733c347f0
 00000000000i[PLUGIN] loaded plugin libbx_pci.so
-00000000000i[      ] lt_dlhandle is 0x6050cc0d9030
+00000000000i[      ] lt_dlhandle is 0x61f73345e680
 00000000000i[PLUGIN] loaded plugin libbx_pci2isa.so
-00000000000i[      ] lt_dlhandle is 0x6050cc067180
+00000000000i[      ] lt_dlhandle is 0x61f7335800e0
 00000000000i[PLUGIN] loaded plugin libbx_usb_uhci.so
-00000000000i[      ] lt_dlhandle is 0x6050cc0d92f0
+00000000000i[      ] lt_dlhandle is 0x61f733472320
 00000000000i[PLUGIN] loaded plugin libbx_acpi.so
-00000000000i[      ] lt_dlhandle is 0x6050cc0d9ef0
+00000000000i[      ] lt_dlhandle is 0x61f733472f20
 00000000000i[PLUGIN] loaded plugin libbx_hpet.so
-00000000000i[      ] lt_dlhandle is 0x6050cc8a5fb0
+00000000000i[      ] lt_dlhandle is 0x61f733c3ef90
 00000000000i[PLUGIN] loaded plugin libbx_cmos.so
-00000000000i[      ] lt_dlhandle is 0x6050cc8a67c0
+00000000000i[      ] lt_dlhandle is 0x61f733c3f7a0
 00000000000i[PLUGIN] loaded plugin libbx_dma.so
-00000000000i[      ] lt_dlhandle is 0x6050cc8a6fd0
+00000000000i[      ] lt_dlhandle is 0x61f733c40110
 00000000000i[PLUGIN] loaded plugin libbx_pic.so
-00000000000i[      ] lt_dlhandle is 0x6050cc8a7790
+00000000000i[      ] lt_dlhandle is 0x61f733c408d0
 00000000000i[PLUGIN] loaded plugin libbx_pit.so
-00000000000i[      ] lt_dlhandle is 0x6050cc8a81b0
+00000000000i[      ] lt_dlhandle is 0x61f733c412f0
 00000000000i[PLUGIN] loaded plugin libbx_vga.so
-00000000000i[      ] lt_dlhandle is 0x6050cc8c97f0
+00000000000i[      ] lt_dlhandle is 0x61f733c62930
 00000000000i[PLUGIN] loaded plugin libbx_floppy.so
-00000000000i[      ] lt_dlhandle is 0x6050cc8ca030
+00000000000i[      ] lt_dlhandle is 0x61f733c63170
 00000000000i[PLUGIN] loaded plugin libbx_ioapic.so
-00000000000i[      ] lt_dlhandle is 0x6050cc8ca840
+00000000000i[      ] lt_dlhandle is 0x61f733c63980
 00000000000i[PLUGIN] loaded plugin libbx_keyboard.so
-00000000000i[      ] lt_dlhandle is 0x6050cc8cb140
+00000000000i[      ] lt_dlhandle is 0x61f733c64280
 00000000000i[PLUGIN] loaded plugin libbx_harddrv.so
-00000000000i[      ] lt_dlhandle is 0x6050cc8cd210
+00000000000i[      ] lt_dlhandle is 0x61f733c66350
 00000000000i[PLUGIN] loaded plugin libbx_pci_ide.so
 00000000000i[PLUGIN] init_dev of 'pci' plugin device by virtual method
 00000000000i[DEV   ] i440FX PMC present at device 0, function 0
@@ -90,7 +90,7 @@
 00000000000i[DEV   ] PIIX3 PCI-to-ISA bridge present at device 1, function 0
 00000000000i[PLUGIN] init_dev of 'cmos' plugin device by virtual method
 00000000000i[CMOS  ] Using local time for initial clock
-00000000000i[CMOS  ] Setting initial clock to: Wed Feb 26 20:29:55 2025 (time0=1740619795)
+00000000000i[CMOS  ] Setting initial clock to: Thu Feb 27 12:34:39 2025 (time0=1740677679)
 00000000000i[PLUGIN] init_dev of 'dma' plugin device by virtual method
 00000000000i[DMA   ] channel 4 used by cascade
 00000000000i[PLUGIN] init_dev of 'pic' plugin device by virtual method
@@ -233,7 +233,6 @@
 00000000000i[PLUGIN] reset of 'serial' plugin device by virtual method
 00000000000i[PLUGIN] reset of 'usb_uhci' plugin device by virtual method
 00000000000i[      ] set SIGINT handler to bx_debug_ctrlc_handler
-00000000000i[      ] Ctrl-C detected in signal handler.
 00000000000i[      ] dbg: Quit
 00000000000i[CPU0  ] CPU is in real mode (active)
 00000000000i[CPU0  ] CS.mode = 16 bit
@@ -252,5 +251,5 @@
 00000000000i[CPU0  ] | EIP=0000fff0 (0000fff0)
 00000000000i[CPU0  ] | CR0=0x60000010 CR2=0x00000000
 00000000000i[CPU0  ] | CR3=0x00000000 CR4=0x00000000
-00000000000i[CMOS  ] Last time is 1740619795 (Wed Feb 26 20:29:55 2025)
+00000000000i[CMOS  ] Last time is 1740677679 (Thu Feb 27 12:34:39 2025)
 00000000000i[SIM   ] quit_sim called with exit code 0
