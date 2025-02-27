@@ -5,10 +5,8 @@
 #define FB_DARK_GREY 8
 
 int main() {
-  FBWriteData fbWriteData;
-  fbWriteData.ascii = 'a';
-  fbWriteData.bg = FB_DARK_GREY;
-  fbWriteData.fg = FB_GREEN;
-  fb_write_cell(fbWriteData);
+  
+  fb_write("HELLO WORLD!", 12);
+
   return 0;
 }

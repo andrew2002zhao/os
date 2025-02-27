@@ -39,4 +39,12 @@ void fb_write_cell(FBWriteData fbWriteData);
 
 void fb_move_cursor(unsigned short pos);
 
+/** 
+ * Write to the screen. Text wraps around when reading.
+ *
+ * @param buffer The input buffer
+ * @param len the length of the input buffer
+ */
+void fb_write(char * buffer, int len);
+
 #endif /* INCLUDE_IO_H */

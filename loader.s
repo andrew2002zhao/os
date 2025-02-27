@@ -23,6 +23,7 @@ align 4                         ; the code must be 4 byte aligned
 loader:  
 
     mov esp, kernel_stack + KERNEL_STACK_SIZE ;move stack register to start at the top of the stack and grow downwards
+    ; must setup the stack before calling c
 
                        ; the loader label (defined as entry point in linker script)
     
