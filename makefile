@@ -1,6 +1,6 @@
 # make file links both loader.s and stack.s together using the linkerscript link.ld
 ASSEMBLY_OBJECTS = loader.o io_asm.o
-C_OBJECTS = kmain.o io.o
+C_OBJECTS = kmain.o io.o serial.o
 OBJECTS = $(C_OBJECTS) $(ASSEMBLY_OBJECTS)
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \

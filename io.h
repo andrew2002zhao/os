@@ -22,6 +22,14 @@ typedef struct FBWriteData{
  */
 void outb(unsigned short port, unsigned char data);
 
+/** inb:
+ *  Reads a byte from a given port and returns it back
+ *  @param port The address of the I/O port
+ *  @return     The read byte
+ */
+
+unsigned char inb(unsigned short port);
+
 /** fb_write_cell
  * puts an ascii value inside the framebuffer with a foreground color and background color. Writes to the current frame buffer position
  * 
