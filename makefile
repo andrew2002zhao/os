@@ -1,6 +1,6 @@
 # make file links both loader.s and stack.s together using the linkerscript link.ld
-ASSEMBLY_OBJECTS = loader.o io_asm.o
-C_OBJECTS = kmain.o io.o serial.o
+ASSEMBLY_OBJECTS = loader.o io_asm.o gdt_asm.o
+C_OBJECTS = kmain.o io.o serial.o gdt.o
 OBJECTS = $(C_OBJECTS) $(ASSEMBLY_OBJECTS)
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
@@ -43,4 +43,4 @@ os.iso: kernel.elf
 	$(AS) $(ASFLAGS) $< -o $@
 
 clean :
-	rm -rf *.o kernel.elf os.iso
+	rm -rf *.o kernel.elf os.iso bochslog.txt com1.out
