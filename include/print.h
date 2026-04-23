@@ -1,4 +1,16 @@
 #define CONSOLE 0
 #define SERIAL 1 
 
-void print(char* string, int device, ...);
+
+typedef enum Device {
+  Console,
+  Serial
+} Device;
+
+/**
+ * @param string the input string
+ * @param device the output device
+ */
+
+
+void print(char* string, Device device, ...);
