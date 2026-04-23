@@ -34,6 +34,7 @@ void outb(unsigned short port, unsigned char data);
 
 /** inb:
  *  Reads a byte from a given port and returns it back
+ * 
  *  @param port The address of the I/O port
  *  @return     The read byte
  */
@@ -58,6 +59,7 @@ void fb_write_cell(FBWriteData fbWriteData);
 void fb_move_cursor(unsigned short pos);
 
 /** 
+ * fb_write
  * Write to the screen. Text wraps around when reading.
  *
  * @param buffer The input buffer

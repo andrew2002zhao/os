@@ -67,10 +67,16 @@ typedef struct GDTR {
   unsigned int address;
 } __attribute__((packed)) GDTR;
 
-void gdt_setup();
 /**
- * load_gdt
- * takes a pointer to a global descriptor struct
+ * gdt_setup:
+ * sets up the gdt with the kernel code and data segments
+ */
+
+void gdt_setup();
+
+/**
+ * load_gdt:
+ * takes a pointer to a global descriptor struct and loads the gdt 
  * 
  * @param gdtr
  * The address to a global descriptor struct

@@ -2,8 +2,6 @@
 #define INCLUDE_SERIAL_H
 #include "io.h" /* io.h is implement in the section "Moving the cursor" */
 
-
-
 /** serial_configure_baud_rate:
  *  Sets the speed of the data being sent. The default speed of a serial
  *  port is 115200 bits/s. The argument is a divisor of that number, hence
@@ -38,6 +36,7 @@ int serial_is_transmit_fifo_empty(unsigned int com);
 /**
  * serial_setup:
  * sets up the serial port, only needs to be called once
+ * 
  * @param com The COM port
  */
 void serial_setup(unsigned short com);
@@ -45,6 +44,7 @@ void serial_setup(unsigned short com);
 /** 
  * serial_write:
  * writes a text string to the serial port 
+ * 
  * @param com    the serial device 
  * @param buffer the buffer of data
  */
