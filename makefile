@@ -58,5 +58,5 @@ clean :
 C_TESTS = $(wildcard test/*_test.c)
 
 test: test/Unity/src/unity.c $(C_TESTS)
-	gcc -Itest -Itest/Unity/src -Iinclude test/Unity/src/unity.c $(C_TESTS) src/string.c -o test_runner
+	gcc -Itest -Itest/Unity/src -Iinclude test/Unity/src/unity.c $(C_TESTS) $(C_SOURCES) -o test_runner
 	./test_runner
