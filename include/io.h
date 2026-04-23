@@ -11,6 +11,8 @@ typedef struct FBWriteData{
   int ascii : 8;
   int fg : 4;
   int bg : 4;
+
+
 } FBWriteData;
 
 

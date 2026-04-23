@@ -30,15 +30,16 @@ run : os.iso
 
 os.iso: kernel.elf
 	cp $(BUILD_DIR)/kernel.elf  iso/boot/kernel.elf
-							-b boot/grub/stage2_eltorito    \
-							-no-emul-boot                   \
-							-boot-load-size 4               \
-							-A os                           \
-							-input-charset utf8             \
-							-quiet                          \
-							-boot-info-table                \
-							-o os.iso                       \
-							iso
+	genisoimage -R                    \
+		-b boot/grub/stage2_eltorito    \
+		-no-emul-boot                   \
+		-boot-load-size 4               \
+		-A os                           \
+		-input-charset utf8             \
+		-quiet                          \
+		-boot-info-table                \
+		-o os.iso                       \
+		iso
 
 # $@ is an automatic variable for the target name
 # $< outputs the prerequisite
