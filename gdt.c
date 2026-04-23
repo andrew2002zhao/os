@@ -1,10 +1,15 @@
 #include "gdt.h"
-
-
 GDT gdt[3];
 
 void gdt_setup() {
-    
+    //NULL DESCRIPTOR
+    gdt[1].g = 0;
+    gdt[1].limit_16_19 = 0;
+    gdt[1].p = 0;
+    gdt[1].s = 0;
+    gdt[1].type = 0;
+    gdt[1].segment_limit_0_15 = 0;
+    gdt[1].db = 0;
     //KERNEL CODE DESCRIPTOR
     gdt[1].g = 1;
     gdt[1].limit_16_19 = 0b1111;
