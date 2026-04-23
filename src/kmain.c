@@ -11,9 +11,9 @@ int main() {
   serial_setup(SERIAL_COM1_BASE);
   //setup the gdt
   gdt_setup();
-  // serial_write(SERIAL_COM1_BASE, "HELLO WORLD!", 12);
+  // serial_write(SERIAL_COM1_BASE, "HELLO WORLD!HELLO WORLD!HELLO WORLD!HELLO WORLD!HELLO WORLD!", 60);
 
-  fb_write("HELLO WORLD!", 12);
+  fb_write("HELLO WORLD!HELLO WORLD!HELLO WORLD!HELLO WORLD!HELLO WORLD!HELLO WORLD!", 72);
 
   return 0;
 }

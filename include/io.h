@@ -7,14 +7,22 @@ Bit:     | 15 14 13 12 11 10 9 8 | 7 6 5 4 | 3 2 1 0 |
 Content: | ASCII                 | FG      | BG      |
 */ 
 // bit alignment
+
+/*
+fb[0] = ascii
+fb[1] = color
+
+VGA frame buffer is big endian memory layout
+*/
 typedef struct FBWriteData{
-  int ascii : 8;
-  int fg : 4;
   int bg : 4;
+  int fg : 4;
+  int ascii : 8;
+} __attribute__((packed))FBWriteData;
 
 
-} FBWriteData;
 
+_Static_assert(sizeof(FBWriteData) == 2, "FBWriteData should be 2 bytes!");
 
 /** outb:
  *  Sends the given data to the given I/O port. Defined in io.s

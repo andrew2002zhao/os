@@ -9,8 +9,10 @@
 #define FB_LOW_BYTE_COMMAND     15
 
 /* Frame Buffer Colors */
+#define FB_BLACK     0
 #define FB_GREEN     2
 #define FB_DARK_GREY 8
+#define FB_WHITE     15
 
 /* Frame Buffer Address */
 #define FB_ADDRESS 0x000B8010
@@ -31,11 +33,11 @@ void fb_move_cursor(unsigned short pos) {
   outb(FB_COMMAND_PORT, FB_LOW_BYTE_COMMAND);
   outb(FB_DATA_PORT,    pos & 0x00FF);
 }
-//TODO ADD TEXT WRAP AROUND
+
 void fb_write(char * buffer, int len) {
   FBWriteData fbWriteData;
-  fbWriteData.bg = FB_DARK_GREY;
-  fbWriteData.fg = FB_GREEN;
+  fbWriteData.bg = FB_WHITE;
+  fbWriteData.fg = FB_BLACK;
   for(int i = 0; i < len; i++) {
     fbWriteData.ascii = buffer[i];
     fb_write_cell(fbWriteData);
