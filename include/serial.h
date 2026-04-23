@@ -38,16 +38,17 @@ int serial_is_transmit_fifo_empty(unsigned int com);
 /**
  * serial_setup:
  * sets up the serial port, only needs to be called once
+ * @param com The COM port
  */
 void serial_setup(unsigned short com);
 
 /** 
  * serial_write:
  * writes a text string to the serial port 
+ * @param com    the serial device 
  * @param buffer the buffer of data
- * @param len    the length of the input buffer
  */
-void serial_write(unsigned short com, char * buffer, int len);
+void serial_write(unsigned short com, char * buffer);
  
 
 #endif

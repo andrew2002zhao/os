@@ -1,4 +1,5 @@
 #include "serial.h"
+#include "string.h"
 
 /* The I/O ports */
 
@@ -66,7 +67,8 @@ void serial_setup(unsigned short com){
   serial_configure_line(com);
 }
 
-void serial_write(unsigned short com, char * buffer, int len){
+void serial_write(unsigned short com, char * buffer){
+  int len = strlen(buffer);
   for(int i = 0; i < len; i++) {
     //check if buffer is available
     serial_is_transmit_fifo_empty(com);

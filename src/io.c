@@ -1,4 +1,5 @@
 #include "io.h"
+#include "string.h"
 
 /* The I/O ports */
 #define FB_COMMAND_PORT         0x3D4
@@ -34,7 +35,8 @@ void fb_move_cursor(unsigned short pos) {
   outb(FB_DATA_PORT,    pos & 0x00FF);
 }
 
-void fb_write(char * buffer, int len) {
+void fb_write(char * buffer) {
+  int len = strlen(buffer);
   FBWriteData fbWriteData;
   fbWriteData.bg = FB_WHITE;
   fbWriteData.fg = FB_BLACK;
