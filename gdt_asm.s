@@ -1,12 +1,10 @@
 global load_gdt
 
 section .text
+
 load_gdt:
   mov eax, [esp + 4]
   lgdt [eax]
-
-  
-
   jmp 0x08:flush_cs
   
 
