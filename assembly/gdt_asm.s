@@ -9,7 +9,7 @@ load_gdt:
   
 
 flush_cs:
-        ; now we've changed cs to 0x08
+  ; now we've changed cs to 0x08
   mov ax, 0x10
   mov ds, ax
   mov es, ax
