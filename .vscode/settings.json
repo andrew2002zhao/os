@@ -3,5 +3,6 @@
     "array": "c",
     "string": "c",
     "string_view": "c"
-  }
+  },
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true
 }

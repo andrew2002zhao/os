@@ -52,4 +52,11 @@ $(BUILD_DIR)/%.o : %.s
 	$(AS) $(ASFLAGS) $< -o $@
 
 clean :
-	rm -rf $(BUILD_DIR) os.iso bochslog.txt com1.out
+	rm -rf $(BUILD_DIR) os.iso bochslog.txt com1.out test_runner
+
+
+C_TESTS = $(wildcard test/*_test.c)
+
+test: test/Unity/src/unity.c $(C_TESTS)
+	gcc -Itest -Itest/Unity/src -Iinclude test/Unity/src/unity.c $(C_TESTS) src/string.c -o test_runner
+	./test_runner
