@@ -1,11 +1,17 @@
 # make file links both loader.s and stack.s together using the linkerscript link.ld
-ASSEMBLY_OBJECTS = loader.o io_asm.o gdt_asm.o
-C_OBJECTS = kmain.o io.o serial.o gdt.o
+# Find all C source files in root, src/, and build object names
+C_SOURCES = $(wildcard *.c src/*.c)
+C_OBJECTS = $(C_SOURCES:.c=.o)
+
+# Find all assembly source files in root and assembly/, build object names
+ASSEMBLY_SOURCES = $(wildcard *.s assembly/*.s)
+ASSEMBLY_OBJECTS = $(ASSEMBLY_SOURCES:.s=.o)
+
 OBJECTS = $(C_OBJECTS) $(ASSEMBLY_OBJECTS)
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
-         -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
-
+         -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c -Iinclude
+# searches include Iinclude
 LDFLAGS = -T link.ld -melf_i386
 AS = nasm
 ASFLAGS = -f elf
@@ -43,4 +49,4 @@ os.iso: kernel.elf
 	$(AS) $(ASFLAGS) $< -o $@
 
 clean :
-	rm -rf *.o kernel.elf os.iso bochslog.txt com1.out
+	rm -rf *.o src/*.o assembly/*.o kernel.elf os.iso bochslog.txt com1.out
