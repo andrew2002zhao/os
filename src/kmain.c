@@ -13,7 +13,7 @@ int main() {
   gdt_setup();
   // serial_write(SERIAL_COM1_BASE, "HELLO WORLD!HELLO WORLD!HELLO WORLD!HELLO WORLD!HELLO WORLD!", 60);
 
-  fb_write("HELLO WORLD!\0");
+  fb_write("HELLO WORLD!");
 
   return 0;
 }
