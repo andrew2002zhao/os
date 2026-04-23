@@ -40,8 +40,6 @@ os.iso: kernel.elf
 							-o os.iso                       \
 							iso
 
-	
-
 # $@ is an automatic variable for the target name
 # $< outputs the prerequisite
 $(BUILD_DIR)/%.o : %.c 
