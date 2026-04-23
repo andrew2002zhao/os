@@ -1,11 +1,14 @@
 # make file links both loader.s and stack.s together using the linkerscript link.ld
-# Find all C source files in root, src/, and build object names
-C_SOURCES = $(wildcard *.c src/*.c)
-C_OBJECTS = $(C_SOURCES:.c=.o)
+BUILD_DIR = build
+LOG_DIR = logs
 
-# Find all assembly source files in root and assembly/, build object names
+# Find all C source files in root, src/, and build object names in build/
+C_SOURCES = $(wildcard *.c src/*.c)
+C_OBJECTS = $(addprefix $(BUILD_DIR)/,$(C_SOURCES:.c=.o))
+
+# Find all assembly source files in root and assembly/, build object names in build/
 ASSEMBLY_SOURCES = $(wildcard *.s assembly/*.s)
-ASSEMBLY_OBJECTS = $(ASSEMBLY_SOURCES:.s=.o)
+ASSEMBLY_OBJECTS = $(addprefix $(BUILD_DIR)/,$(ASSEMBLY_SOURCES:.s=.o))
 
 OBJECTS = $(C_OBJECTS) $(ASSEMBLY_OBJECTS)
 CC = gcc
@@ -19,15 +22,14 @@ ASFLAGS = -f elf
 all: kernel.elf
 
 kernel.elf: $(OBJECTS)	
-	ld $(LDFLAGS) $(OBJECTS) -o kernel.elf
+	ld $(LDFLAGS) $(OBJECTS) -o $(BUILD_DIR)/kernel.elf
 
 
 run : os.iso
 	bochs -f bochsrc.txt -q
 
 os.iso: kernel.elf
-	cp kernel.elf  iso/boot/kernel.elf
-	genisoimage -R                              \
+	cp $(BUILD_DIR)/kernel.elf  iso/boot/kernel.elf
 							-b boot/grub/stage2_eltorito    \
 							-no-emul-boot                   \
 							-boot-load-size 4               \
@@ -42,11 +44,13 @@ os.iso: kernel.elf
 
 # $@ is an automatic variable for the target name
 # $< outputs the prerequisite
-%.o : %.c 
+$(BUILD_DIR)/%.o : %.c 
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $< -o $@ 
 
-%.o : %.s
+$(BUILD_DIR)/%.o : %.s
+	@mkdir -p $(dir $@)
 	$(AS) $(ASFLAGS) $< -o $@
 
 clean :
-	rm -rf *.o src/*.o assembly/*.o kernel.elf os.iso bochslog.txt com1.out
+	rm -rf $(BUILD_DIR) os.iso bochslog.txt com1.out
