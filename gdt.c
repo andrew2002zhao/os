@@ -1,11 +1,8 @@
 #include "gdt.h"
 GDT gdt[3];
 
-
-
-
 void gdt_setup() {
-    //NULL DESCRIPTOR
+    //NULL DESCRIPTOR 0 since its null
     gdt[0].segment_limit_0_15 = 0;
     gdt[0].base_address_0_15 = 0;
     gdt[0].base_address_16_23 = 0;
