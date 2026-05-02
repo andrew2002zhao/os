@@ -65,8 +65,6 @@ int kstrlcat(char* destination, char* source, int maxlen) {
 }
 
 void kstrflip(char* string) {
-  //create check for mutable array
-
   int len = kstrlen(string);
 
   for(int i = 0; i < len / 2; i++){
@@ -78,23 +76,39 @@ void kstrflip(char* string) {
   }
 }
 
-// char* kitoa(int number) {
-//   //convert number to ascii
-//   // while number is > 0
-//   char return_string[10] = "";
-//   while(number > 0) {
-//     //  read digit by digit by % 10 
-//     int digit = number % 10;
-//     //  take digit and + 48 then type cast to char
-//     char digit_char = (char) (digit + 48);
-//     //  add the digit character to return string
+void kitoa(int number, char* destination, int maxlen) {
+  //convert number to ascii
+  // while number is > 0
+  
+  if(number == 0) {
+    destination[0] = '0';
+    destination[1] = '\0';
+    return;
+  }
 
-//     kstrlcat(return_string, &digit_char, 10);
-//     kstrflip(return_string);
-//     //  subtract number by the digit
-//     number -= digit;
-//     //divide by 10;
-//     number /= 10;
-//   }
-//   return return_string;
-// }
+  int negative = 0;
+
+  if(number < 0) {
+    negative = 1;
+    number *= -1;
+  }
+
+  while(number > 0) {
+    //  read digit by digit by % 10 
+    int digit = number % 10;
+    //  take digit and + 48 then type cast to char
+    char digit_char[2];
+    digit_char[0] =  digit + 48;
+    digit_char[1] = '\0';
+    //  add the digit character to return string
+    kstrlcat(destination, digit_char, maxlen);
+    //divide by 10;
+    number /= 10;
+  }
+  if(negative) {
+    kstrlcat(destination, "-", maxlen);
+  }
+
+  kstrflip(destination);
+
+}

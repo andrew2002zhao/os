@@ -34,10 +34,13 @@ int katoi(char* string);
  * Takes an integer and returns the c-string representation.
  * 
  * @param num The input integer
+ * @param destination the destination buffer with the string, the user supplies the array
+ * @param maxlen the length of the buffer
+ * 
  * @return The null-terminated c-string.
  *
  */
-char* kitoa(int number);
+void kitoa(int number, char* destination, int maxlen);
 
 /**
  * kstrcat:

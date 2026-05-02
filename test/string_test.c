@@ -102,10 +102,16 @@ void test_kstrlcat_strings_smaller_than_maxlen(void) {
 	TEST_ASSERT_EQUAL_STRING("abc123", destination);
 }
 
-void test_kstrflip_standard_string(void) {
+void test_kstrflip_standard_even_length_string(void) {
 	char string[] = "abc123";
 	kstrflip(string);
 	TEST_ASSERT_EQUAL_STRING(string, "321cba");
+}
+
+void test_kstrflip_standard_odd_length_string(void) {
+	char string[] = "abc1234";
+	kstrflip(string);
+	TEST_ASSERT_EQUAL_STRING(string, "4321cba");
 }
 
 void test_kstrflip_anagram_string(void) {
@@ -114,26 +120,39 @@ void test_kstrflip_anagram_string(void) {
 	TEST_ASSERT_EQUAL_STRING(string, "racecar");
 }
 
-void test_strflip_empty_string(void) {
+void test_kstrflip_empty_string(void) {
 	char string[] = "";
 	kstrflip(string);
 	TEST_ASSERT_EQUAL_STRING(string, "");
 }
 
-// void test_kitoa_positive_integer(void) {
-// 	int number = 123;
-// 	TEST_ASSERT_EQUAL_STRING("123", kitoa(number));
-// }
+void test_kitoa_positive_integer(void) {
+	int number = 123;
+	char return_buffer[4] = "";
+	kitoa(number, return_buffer, 3);
+	TEST_ASSERT_EQUAL_STRING("123", return_buffer);
+}
 
-// void test_kitoa_negative_integer(void) {
-// 	int number = -123;
-// 	TEST_ASSERT_EQUAL_STRING("-123", kitoa(number));
-// }
+void test_kitoa_positive_integer_ends_with_0(void) {
+	int number = 120;
+	char return_buffer[4] = "";
+	kitoa(number, return_buffer, 3);
+	TEST_ASSERT_EQUAL_STRING("120", return_buffer);
+}
 
-// void test_kitoa_zero(void) {
-// 	int number = 0;
-// 	TEST_ASSERT_EQUAL_STRING("0", kitoa(number));
-// }
+void test_kitoa_negative_integer(void) {
+	int number = -123;
+	char return_buffer[5] = "";
+	kitoa(number, return_buffer, 5);
+	TEST_ASSERT_EQUAL_STRING("-123", return_buffer);
+}
+
+void test_kitoa_zero(void) {
+	int number = 0;
+	char return_buffer[2] = "";
+	kitoa(number, return_buffer, 2);
+	TEST_ASSERT_EQUAL_STRING("0", return_buffer);
+}
 
 
 int main(void) {
@@ -158,7 +177,15 @@ int main(void) {
 	RUN_TEST(test_kstrlcat_strings_larger_than_maxlen);
 	RUN_TEST(test_kstrlcat_strings_smaller_than_maxlen);
 	//kstrflip tests
-	RUN_TEST(test_kstrflip_standard_string);
+	RUN_TEST(test_kstrflip_standard_even_length_string);
+	RUN_TEST(test_kstrflip_standard_odd_length_string);
+	RUN_TEST(test_kstrflip_anagram_string);
+	RUN_TEST(test_kstrflip_empty_string);
+	//kiota tests
+	RUN_TEST(test_kitoa_positive_integer);
+	RUN_TEST(test_kitoa_positive_integer_ends_with_0);
+	RUN_TEST(test_kitoa_negative_integer);
+	RUN_TEST(test_kitoa_zero);
 
 
 	return UNITY_END();
