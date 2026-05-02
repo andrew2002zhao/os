@@ -41,7 +41,11 @@ char* kitoa(int number);
 
 /**
  * kstrcat:
+ * Concatenates two strings and returns a new string pointer.
  * 
+ * @param destination The destination string where the source string is copied to starting at the first null terminated character
+ * @param source The source string to be copied over
+ * @return The concatenated null-terminated c-string.
  */
 
 char* kstrcat(char* destination, char* source);
