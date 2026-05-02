@@ -83,6 +83,25 @@ void test_kitoa_zero(void) {
 	TEST_ASSERT_EQUAL_STRING("0", kitoa(number));
 }
 
+void test_kstrcat_regular_strings(void) {
+	char* destination = "abc";
+	char* source = "123";
+	TEST_ASSERT_EQUAL_STRING("abc123", kstrcat(destination, source));
+}
+
+void test_kstrcat_empty_source_string(void) {
+	char* destination = "abc";
+	char* source = "";
+	TEST_ASSERT_EQUAL_STRING("abc", kstrcat(destination, source));
+}
+
+void test_kstrcat_empty_destination_string(void) {
+	char* destination = "";
+	char* source = "123";
+	TEST_ASSERT_EQUAL_STRING("123", kstrcat(destination, source));
+}
+
+
 int main(void) {
 	UNITY_BEGIN();
 	// kstrlen tests
