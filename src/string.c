@@ -47,5 +47,27 @@ int katoi(char* string) {
   return return_number;
 }
 
+char* kitoa(int number) {
+  //convert number to ascii
+  // while number is > 0
+  char* return_string = "";
+  while(number > 0) {
+    //  read digit by digit by % 10 
+    int digit = number % 10;
+    //  take digit and + 48 then type cast to char
+    char digit_char = (char) (digit + 48);
+    //  add the digit character to return string
 
+    // kstrcpy(digit_char, return_string);
 
+    //  subtract number by the digit
+    number -= digit;
+    //divide by 10;
+    number /= 10;
+  }
+  return return_string;
+}
+
+// char* kstrcat(char* destination, char* source) {
+
+// }

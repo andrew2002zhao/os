@@ -39,6 +39,12 @@ int katoi(char* string);
  */
 char* kitoa(int number);
 
+/**
+ * kstrcat:
+ * 
+ */
+
+char* kstrcat(char* destination, char* source);
 
 
 #endif
