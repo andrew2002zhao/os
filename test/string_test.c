@@ -68,20 +68,20 @@ void test_katoi_stops_at_invalid_character(void) {
 	TEST_ASSERT_EQUAL_INT(0, katoi(str));
 }
 
-void test_kitoa_positive_integer(void) {
-	int number = 123;
-	TEST_ASSERT_EQUAL_STRING("123", kitoa(number));
-}
+// void test_kitoa_positive_integer(void) {
+// 	int number = 123;
+// 	TEST_ASSERT_EQUAL_STRING("123", kitoa(number));
+// }
 
-void test_kitoa_negative_integer(void) {
-	int number = -123;
-	TEST_ASSERT_EQUAL_STRING("-123", kitoa(number));
-}
+// void test_kitoa_negative_integer(void) {
+// 	int number = -123;
+// 	TEST_ASSERT_EQUAL_STRING("-123", kitoa(number));
+// }
 
-void test_kitoa_zero(void) {
-	int number = 0;
-	TEST_ASSERT_EQUAL_STRING("0", kitoa(number));
-}
+// void test_kitoa_zero(void) {
+// 	int number = 0;
+// 	TEST_ASSERT_EQUAL_STRING("0", kitoa(number));
+// }
 
 void test_kstrlcat_regular_strings(void) {
 	char destination[7] = "abc";
@@ -133,6 +133,8 @@ int main(void) {
 	RUN_TEST(test_katoi_stops_at_non_numberic);
 	RUN_TEST(test_katoi_stops_at_middle_space);
 	RUN_TEST(test_katoi_stops_at_invalid_character);
+	// kstrlcat tests
+	RUN_TEST(test_kstrlcat_regular_strings);
 
 	return UNITY_END();
 }

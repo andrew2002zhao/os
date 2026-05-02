@@ -47,36 +47,40 @@ int katoi(char* string) {
   return return_number;
 }
 
-char* kitoa(int number) {
-  //convert number to ascii
-  // while number is > 0
-  char* return_string = "";
-  while(number > 0) {
-    //  read digit by digit by % 10 
-    int digit = number % 10;
-    //  take digit and + 48 then type cast to char
-    char digit_char = (char) (digit + 48);
-    //  add the digit character to return string
+// char* kitoa(int number) {
+//   //convert number to ascii
+//   // while number is > 0
+//   char* return_string = "";
+//   while(number > 0) {
+//     //  read digit by digit by % 10 
+//     int digit = number % 10;
+//     //  take digit and + 48 then type cast to char
+//     char digit_char = (char) (digit + 48);
+//     //  add the digit character to return string
 
-    //  return_string = kstrcat(digit_char, return_string);
+//     //  return_string = kstrcat(digit_char, return_string);
 
-    //  subtract number by the digit
-    number -= digit;
-    //divide by 10;
-    number /= 10;
-  }
-  return return_string;
-}
+//     //  subtract number by the digit
+//     number -= digit;
+//     //divide by 10;
+//     number /= 10;
+//   }
+//   return return_string;
+// }
 
 int kstrlcat(char* destination, char* source, int maxlen) {
-  //create a string buffer thats the size of the destination string + the source string
   int n = kstrlen(destination);
   int m = kstrlen(source);
   int new_string_length = n + m;
+  
+  if (new_string_length > maxlen) {
+    return -1;
+  }
 
   //copy the destination string to the first n bytes of the new string buffer
-  for( i = 0 ; i < n; i++ ) {
-
+  for(int i = n ; i < n + m; i++) {
+    destination[i] = source[i - n];
   }
   //copy the soruce string to the n - n + mth bytes of the new string buffer
+  return 0;
 }
