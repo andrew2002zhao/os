@@ -63,6 +63,8 @@ int kstrlcat(char* destination, char* source, int maxlen);
  * 
  * @param string The string to flip
  * 
+ * Assumption, passed char buffer must be mutable.
+ * 
  */
 
 void kstrflip(char* string);

@@ -103,19 +103,19 @@ void test_kstrlcat_strings_smaller_than_maxlen(void) {
 }
 
 void test_kstrflip_standard_string(void) {
-	char* string = "abc123";
+	char string[] = "abc123";
 	kstrflip(string);
 	TEST_ASSERT_EQUAL_STRING(string, "321cba");
 }
 
 void test_kstrflip_anagram_string(void) {
-	char* string = "racecar";
+	char string[] = "racecar";
 	kstrflip(string);
 	TEST_ASSERT_EQUAL_STRING(string, "racecar");
 }
 
 void test_strflip_empty_string(void) {
-	char* string = "";
+	char string[] = "";
 	kstrflip(string);
 	TEST_ASSERT_EQUAL_STRING(string, "");
 }
@@ -157,6 +157,9 @@ int main(void) {
 	RUN_TEST(test_kstrlcat_empty_destination_string);
 	RUN_TEST(test_kstrlcat_strings_larger_than_maxlen);
 	RUN_TEST(test_kstrlcat_strings_smaller_than_maxlen);
+	//kstrflip tests
+	RUN_TEST(test_kstrflip_standard_string);
+
 
 	return UNITY_END();
 }

@@ -47,26 +47,6 @@ int katoi(char* string) {
   return return_number;
 }
 
-char* kitoa(int number) {
-  //convert number to ascii
-  // while number is > 0
-  char return_string[10] = "";
-  while(number > 0) {
-    //  read digit by digit by % 10 
-    int digit = number % 10;
-    //  take digit and + 48 then type cast to char
-    char digit_char = (char) (digit + 48);
-    //  add the digit character to return string
-
-    kstrlcat(return_string, &digit_char, 10);
-    kstrflip(return_string);
-    //  subtract number by the digit
-    number -= digit;
-    //divide by 10;
-    number /= 10;
-  }
-  return return_string;
-}
 
 int kstrlcat(char* destination, char* source, int maxlen) {
   int n = kstrlen(destination);
@@ -83,3 +63,38 @@ int kstrlcat(char* destination, char* source, int maxlen) {
   //copy the soruce string to the n - n + mth bytes of the new string buffer
   return 0;
 }
+
+void kstrflip(char* string) {
+  //create check for mutable array
+
+  int len = kstrlen(string);
+
+  for(int i = 0; i < len / 2; i++){
+    //standard swap algo
+    char temp = string[i];
+    int mirrored_position =  len - 1 - i;
+    string[i] = string[mirrored_position];
+    string[mirrored_position] = temp;
+  }
+}
+
+// char* kitoa(int number) {
+//   //convert number to ascii
+//   // while number is > 0
+//   char return_string[10] = "";
+//   while(number > 0) {
+//     //  read digit by digit by % 10 
+//     int digit = number % 10;
+//     //  take digit and + 48 then type cast to char
+//     char digit_char = (char) (digit + 48);
+//     //  add the digit character to return string
+
+//     kstrlcat(return_string, &digit_char, 10);
+//     kstrflip(return_string);
+//     //  subtract number by the digit
+//     number -= digit;
+//     //divide by 10;
+//     number /= 10;
+//   }
+//   return return_string;
+// }
