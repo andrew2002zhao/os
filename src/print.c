@@ -19,3 +19,6 @@
 //   //  output the character
 //   // 
 // }
+
+printf("hi elina i love you my name is %s, i love you %d times", "andrew", 1000)
+

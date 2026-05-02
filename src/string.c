@@ -98,7 +98,7 @@ void kitoa(int number, char* destination, int maxlen) {
     int digit = number % 10;
     //  take digit and + 48 then type cast to char
     char digit_char[2];
-    digit_char[0] =  digit + 48;
+    digit_char[0] =  (char) (digit + 48);
     digit_char[1] = '\0';
     //  add the digit character to return string
     kstrlcat(destination, digit_char, maxlen);
