@@ -36,7 +36,7 @@ void fb_move_cursor(unsigned short pos) {
 }
 
 void fb_write(char * buffer) {
-  int len = strlen(buffer);
+  int len = kstrlen(buffer);
   FBWriteData fbWriteData;
   fbWriteData.bg = FB_WHITE;
   fbWriteData.fg = FB_BLACK;

@@ -1,9 +1,6 @@
 #ifndef INCLUDE_PRINT_H
 #define INCLUDE_PRINT_H
 
-#define CONSOLE 0
-#define SERIAL 1 
-
 typedef enum Device {
   Console,
   Serial

@@ -56,7 +56,8 @@ clean :
 
 
 C_TESTS = $(wildcard test/*_test.c)
+TEST_CFLAGS = -Wall -Wextra -Werror -Iinclude
 
-test: test/Unity/src/unity.c $(C_TESTS)
-	gcc -Itest -Itest/Unity/src -Iinclude test/Unity/src/unity.c $(C_TESTS) $(C_SOURCES) -o test_runner
+test: test/Unity/src/unity.c $(C_TESTS) src/string.c
+	$(CC) $(TEST_CFLAGS) -Itest -Itest/Unity/src test/Unity/src/unity.c $(C_TESTS) src/string.c -o test_runner
 	./test_runner
