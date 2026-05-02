@@ -83,22 +83,38 @@ void test_kitoa_zero(void) {
 	TEST_ASSERT_EQUAL_STRING("0", kitoa(number));
 }
 
-void test_kstrcat_regular_strings(void) {
-	char* destination = "abc";
+void test_kstrlcat_regular_strings(void) {
+	char destination[7] = "abc";
 	char* source = "123";
-	TEST_ASSERT_EQUAL_STRING("abc123", kstrcat(destination, source));
+	kstrlcat(destination, source, 7);
+	TEST_ASSERT_EQUAL_STRING("abc123", destination);
 }
 
-void test_kstrcat_empty_source_string(void) {
-	char* destination = "abc";
+void test_kstrlcat_empty_source_string(void) {
+	char destination[4] = "abc";
 	char* source = "";
-	TEST_ASSERT_EQUAL_STRING("abc", kstrcat(destination, source));
+	kstrlcat(destination, source, 4);
+	TEST_ASSERT_EQUAL_STRING("abc", destination);
 }
 
-void test_kstrcat_empty_destination_string(void) {
-	char* destination = "";
+void test_kstrlcat_empty_destination_string(void) {
+	char destination[4] = "";
 	char* source = "123";
-	TEST_ASSERT_EQUAL_STRING("123", kstrcat(destination, source));
+	kstrlcat(destination, source, 4);
+	TEST_ASSERT_EQUAL_STRING("123", destination);
+}
+
+void test_kstrlcat_strings_larger_than_maxlen(void) {
+	char destination[5] = "abc";
+	char* source = "123";
+	TEST_ASSERT_EQUAL_INT(-1, kstrlcat(destination, source, 5));
+}
+
+void test_kstrlcat_strings_smaller_than_maxlen(void) {
+	char destination[7] = "abc";
+	char* source = "123";
+	kstrlcat(destination, source, 7);
+	TEST_ASSERT_EQUAL_STRING("abc123", destination);
 }
 
 

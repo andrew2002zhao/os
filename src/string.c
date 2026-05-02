@@ -68,11 +68,12 @@ char* kitoa(int number) {
   return return_string;
 }
 
-char* kstrlcat(char* destination, char* source, int maxlen) {
+int kstrlcat(char* destination, char* source, int maxlen) {
   //create a string buffer thats the size of the destination string + the source string
   int n = kstrlen(destination);
   int m = kstrlen(source);
   int new_string_length = n + m;
+
   //copy the destination string to the first n bytes of the new string buffer
   for( i = 0 ; i < n; i++ ) {
 
