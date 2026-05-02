@@ -135,6 +135,10 @@ int main(void) {
 	RUN_TEST(test_katoi_stops_at_invalid_character);
 	// kstrlcat tests
 	RUN_TEST(test_kstrlcat_regular_strings);
+	RUN_TEST(test_kstrlcat_empty_source_string);
+	RUN_TEST(test_kstrlcat_empty_destination_string);
+	RUN_TEST(test_kstrlcat_strings_larger_than_maxlen);
+	RUN_TEST(test_kstrlcat_strings_smaller_than_maxlen);
 
 	return UNITY_END();
 }
