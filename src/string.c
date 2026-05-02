@@ -47,26 +47,26 @@ int katoi(char* string) {
   return return_number;
 }
 
-// char* kitoa(int number) {
-//   //convert number to ascii
-//   // while number is > 0
-//   char* return_string = "";
-//   while(number > 0) {
-//     //  read digit by digit by % 10 
-//     int digit = number % 10;
-//     //  take digit and + 48 then type cast to char
-//     char digit_char = (char) (digit + 48);
-//     //  add the digit character to return string
+char* kitoa(int number) {
+  //convert number to ascii
+  // while number is > 0
+  char return_string[10] = "";
+  while(number > 0) {
+    //  read digit by digit by % 10 
+    int digit = number % 10;
+    //  take digit and + 48 then type cast to char
+    char digit_char = (char) (digit + 48);
+    //  add the digit character to return string
 
-//     //  return_string = kstrcat(digit_char, return_string);
-
-//     //  subtract number by the digit
-//     number -= digit;
-//     //divide by 10;
-//     number /= 10;
-//   }
-//   return return_string;
-// }
+    kstrlcat(return_string, &digit_char, 10);
+    kstrflip(return_string);
+    //  subtract number by the digit
+    number -= digit;
+    //divide by 10;
+    number /= 10;
+  }
+  return return_string;
+}
 
 int kstrlcat(char* destination, char* source, int maxlen) {
   int n = kstrlen(destination);
@@ -76,7 +76,6 @@ int kstrlcat(char* destination, char* source, int maxlen) {
   if (new_string_length > maxlen) {
     return -1;
   }
-
   //copy the destination string to the first n bytes of the new string buffer
   for(int i = n ; i < n + m; i++) {
     destination[i] = source[i - n];

@@ -57,5 +57,16 @@ char* kitoa(int number);
 
 int kstrlcat(char* destination, char* source, int maxlen);
 
+/**
+ * kstrflip:
+ * Flips a string in place
+ * 
+ * @param string The string to flip
+ * 
+ */
+
+void kstrflip(char* string);
+ 
+
 
 #endif
