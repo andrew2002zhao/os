@@ -58,7 +58,7 @@ char* kitoa(int number) {
     char digit_char = (char) (digit + 48);
     //  add the digit character to return string
 
-    // kstrcpy(digit_char, return_string);
+    //  return_string = kstrcat(digit_char, return_string);
 
     //  subtract number by the digit
     number -= digit;
@@ -68,6 +68,14 @@ char* kitoa(int number) {
   return return_string;
 }
 
-// char* kstrcat(char* destination, char* source) {
+char* kstrlcat(char* destination, char* source, int maxlen) {
+  //create a string buffer thats the size of the destination string + the source string
+  int n = kstrlen(destination);
+  int m = kstrlen(source);
+  int new_string_length = n + m;
+  //copy the destination string to the first n bytes of the new string buffer
+  for( i = 0 ; i < n; i++ ) {
 
-// }
+  }
+  //copy the soruce string to the n - n + mth bytes of the new string buffer
+}

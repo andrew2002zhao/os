@@ -45,10 +45,15 @@ char* kitoa(int number);
  * 
  * @param destination The destination string where the source string is copied to starting at the first null terminated character
  * @param source The source string to be copied over
+ * @param maxlen The maximum length to carry over, i.e. the size of the destination buffer
+ * 
+ * Assumption: the destination buffer is large enough to hold both the source and destination strings
+ * 
+ * 
  * @return The concatenated null-terminated c-string.
  */
 
-char* kstrcat(char* destination, char* source);
+char* kstrlcat(char* destination, char* source, int maxlen);
 
 
 #endif
