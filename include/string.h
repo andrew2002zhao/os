@@ -30,7 +30,15 @@ int katoi(char* string);
 
 
 /**
+ * kitoa:
+ * Takes an integer and returns the c-string representation.
  * 
+ * @param num The input integer
+ * @return The null-terminated c-string.
+ *
  */
+char* kitoa(int number);
+
+
 
 #endif
