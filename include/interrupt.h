@@ -43,11 +43,29 @@ struct stack_state {
 } __attribute__((packed));
 
 /**
+ * interrupt_handler
+ * a generic interrupt handler function used to handle interrupts in c from asm
+ * 
  * @param cpu the state of the cpu registers before the interrupt
  * @param stack information about where the previous code pointer and segment before interrupt
  * @param interrupt the interrupt number
  */
 
 void interrupt_handler(struct cpu_state cpu, struct stack_state stack, unsigned int interrupt);
+
+/**
+ * load_idt
+ * load the idt from a memory address
+ * 
+ * @param interrupt_table the address of the first entry of the interrupt table
+ */
+
+void load_idt (InterruptTableEntry * interrupt_table);
+
+/**
+ * idt_setup
+ * 
+ */
+void idt_setup();
 
 #endif

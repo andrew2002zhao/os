@@ -1,6 +1,7 @@
 #include "io.h"
 #include "serial.h"
 #include "gdt.h"
+#include "interrupt.h"
 /* Frame Buffer Colors */
 #define FB_GREEN     2
 #define FB_DARK_GREY 8
@@ -12,7 +13,7 @@ int main() {
   //setup the gdt
   gdt_setup();
   // serial_write(SERIAL_COM1_BASE, "HELLO WORLD!HELLO WORLD!HELLO WORLD!HELLO WORLD!HELLO WORLD!", 60);
-
+  idt_setup();
   fb_write("HELLO WORLD!");
 
   return 0;

@@ -6,7 +6,8 @@ global inb
 ;        [esp + 4] the I/O port
 ;        [esp    ] return address
 ; c syntax - outb(int i/o, unsigned char data)
-; parameters are pushed onto the stack from right to left
+; parameters are pushed onto the stack from left to right
+; since the stack grows downwards then the left most parameter is on the "top" of the stack
 ; the left most paramter is top most on the stack
 outb:
     mov al, [esp + 8] ;data byte
