@@ -17,9 +17,9 @@ typedef struct InterruptTableEntry {
   int offset_high : 16;
   int handler_present : 1;
   int descriptor_privilge_level : 2;
-  int _hardset_zero : 1;
+  int _hardcode_zero : 1;
   int size_of_gate : 1;
-  int _hardset_one_one_zero_zero_zero_zero : 6;
+  int _hardcode_one_one_zero_zero_zero_zero : 6;
   int reserved : 5;
   int segment_selector : 16;
   int offset_low : 16;
@@ -50,7 +50,7 @@ struct stack_state {
 
 void interrupt_handler(struct cpu_state cpu, unsigned int interrupt, struct stack_state stack);
 
-//tell c that interrupt_handler_0 is defined in thce asm file already
+//tell .c that interrupt_handler_0 is defined in the asm file already
 extern void interrupt_handler_0(void);
 
 /**
@@ -61,8 +61,6 @@ extern void interrupt_handler_0(void);
  */
 
 void load_idt (InterruptTableEntry * interrupt_table);
-
-
 
 /**
  * idt_setup
