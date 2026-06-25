@@ -25,5 +25,29 @@ typedef struct InterruptTableEntry {
   int offset_low : 16,
 }__attribute__((packed)) InterruptTableEntry;
 
+struct cpu_state {
+    unsigned int eax;
+    unsigned int ebx;
+    unsigned int ecx;
+    .
+    .
+    .
+    unsigned int esp;
+} __attribute__((packed));
+
+struct stack_state {
+    unsigned int error_code;
+    unsigned int eip;
+    unsigned int cs;
+    unsigned int eflags;
+} __attribute__((packed));
+
+/**
+ * @param cpu the state of the cpu registers before the interrupt
+ * @param stack information about where the previous code pointer and segment before interrupt
+ * @param interrupt the interrupt number
+ */
+
+void interrupt_handler(struct cpu_state cpu, struct stack_state stack, unsigned int interrupt);
 
 #endif
