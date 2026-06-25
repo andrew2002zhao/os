@@ -1,4 +1,5 @@
 #include "gdt.h"
+GDTR gdtr;
 GDT gdt[3];
 
 void gdt_setup() {
@@ -56,7 +57,7 @@ void gdt_setup() {
     gdt[2].g = 1;          // 4KB granularity
     gdt[2].base_address_24_31 = 0;
 
-    GDTR gdtr;
+    
     gdtr.address = (unsigned int) &gdt;
     gdtr.size = 8 * 3 - 1;
     load_gdt(&gdtr);
