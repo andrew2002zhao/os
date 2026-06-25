@@ -7,3 +7,5 @@ load_idt:
   mov eax, [esp + 4]
   lidt [eax]
   ret
+
+global interrupt_handler_%1
