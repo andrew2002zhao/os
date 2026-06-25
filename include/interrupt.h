@@ -1,4 +1,4 @@
-#ifdef INCLUDE_INTERRUPT_H
+#ifndef INCLUDE_INTERRUPT_H
 #define INCLUDE_INTERRUPT_H
 
 /*
@@ -14,24 +14,21 @@ The offset is the address of code (preferrably an assembly code label)
 
 
 typedef struct InterruptTableEntry {
-  int offset_high : 16,
-  int handler_present : 1,
-  int descriptor_privilge_level : 2,
-  int _hardset_zero : 1,
-  int size_of_gate : 1,
-  int _hardset_one_one_zero_zero_zero_zero : 6,
-  int reserved : 5,
-  int segment_selector : 16,
-  int offset_low : 16,
+  int offset_high : 16;
+  int handler_present : 1;
+  int descriptor_privilge_level : 2;
+  int _hardset_zero : 1;
+  int size_of_gate : 1;
+  int _hardset_one_one_zero_zero_zero_zero : 6;
+  int reserved : 5;
+  int segment_selector : 16;
+  int offset_low : 16;
 }__attribute__((packed)) InterruptTableEntry;
 
 struct cpu_state {
     unsigned int eax;
     unsigned int ebx;
     unsigned int ecx;
-    .
-    .
-    .
     unsigned int esp;
 } __attribute__((packed));
 
@@ -65,6 +62,7 @@ void load_idt (InterruptTableEntry * interrupt_table);
 /**
  * idt_setup
  * 
+ * creates an interrupt table and calls load_idt
  */
 void idt_setup();
 
