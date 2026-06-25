@@ -47,7 +47,6 @@ int katoi(char* string) {
   return return_number;
 }
 
-
 int kstrlcat(char* destination, char* source, int maxlen) {
   int n = kstrlen(destination);
   int m = kstrlen(source);
@@ -76,14 +75,14 @@ void kstrflip(char* string) {
   }
 }
 
-void kitoa(int number, char* destination, int maxlen) {
+int kitoa(int number, char* destination, int maxlen) {
   //convert number to ascii
   // while number is > 0
   
   if(number == 0) {
     destination[0] = '0';
     destination[1] = '\0';
-    return;
+    return 0;
   }
 
   int negative = 0;
@@ -101,7 +100,10 @@ void kitoa(int number, char* destination, int maxlen) {
     digit_char[0] =  (char) (digit + 48);
     digit_char[1] = '\0';
     //  add the digit character to return string
-    kstrlcat(destination, digit_char, maxlen);
+  
+    if(kstrlcat(destination, digit_char, maxlen) == -1)  {
+      return -1;
+    }
     //divide by 10;
     number /= 10;
   }
@@ -110,5 +112,8 @@ void kitoa(int number, char* destination, int maxlen) {
   }
 
   kstrflip(destination);
-
+  return 0;
 }
+
+
+//TODO clean up maxlen functionality.

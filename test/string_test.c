@@ -154,6 +154,13 @@ void test_kitoa_zero(void) {
 	TEST_ASSERT_EQUAL_STRING("0", return_buffer);
 }
 
+void test_kitoa_maxlen_too_small(void) {
+	int number = 123;
+	char return_buffer[2] = "";
+	int return_code = kitoa(number, return_buffer, 2);
+	TEST_ASSERT_EQUAL_INT(return_code, -1);
+}
+
 
 int main(void) {
 	UNITY_BEGIN();

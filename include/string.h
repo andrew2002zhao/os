@@ -37,10 +37,12 @@ int katoi(char* string);
  * @param destination the destination buffer with the string, the user supplies the array
  * @param maxlen the length of the buffer
  * 
- * @return The null-terminated c-string.
+ * @return The success codes
+ *          0 if the concatenation is successful
+ *          -1 if the maxlen is smaller than the buffer sizes
  *
  */
-void kitoa(int number, char* destination, int maxlen);
+int kitoa(int number, char* destination, int maxlen);
 
 /**
  * kstrcat:
@@ -55,7 +57,6 @@ void kitoa(int number, char* destination, int maxlen);
  * 
  * Assumption: the destination buffer is large enough to hold both the source and destination strings
  * 
- * 
  */
 
 int kstrlcat(char* destination, char* source, int maxlen);
@@ -66,7 +67,7 @@ int kstrlcat(char* destination, char* source, int maxlen);
  * 
  * @param string The string to flip
  * 
- * Assumption, passed char buffer must be mutable.
+ * Assumption: destination char buffer must be mutable.
  * 
  */
 
