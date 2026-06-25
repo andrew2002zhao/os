@@ -29,7 +29,7 @@ struct cpu_state {
     unsigned int eax;
     unsigned int ebx;
     unsigned int ecx;
-    unsigned int esp;
+    unsigned int ebp;
 } __attribute__((packed));
 
 struct stack_state {
@@ -48,7 +48,7 @@ struct stack_state {
  * @param interrupt the interrupt number
  */
 
-void interrupt_handler(struct cpu_state cpu, struct stack_state stack, unsigned int interrupt);
+void interrupt_handler(struct cpu_state cpu, unsigned int interrupt, struct stack_state stack);
 
 /**
  * load_idt
