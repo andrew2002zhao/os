@@ -50,6 +50,9 @@ struct stack_state {
 
 void interrupt_handler(struct cpu_state cpu, unsigned int interrupt, struct stack_state stack);
 
+//tell c that interrupt_handler_0 is defined in thce asm file already
+extern void interrupt_handler_0(void);
+
 /**
  * load_idt
  * load the idt from a memory address
@@ -58,6 +61,8 @@ void interrupt_handler(struct cpu_state cpu, unsigned int interrupt, struct stac
  */
 
 void load_idt (InterruptTableEntry * interrupt_table);
+
+
 
 /**
  * idt_setup

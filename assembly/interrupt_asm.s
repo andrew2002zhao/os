@@ -1,5 +1,7 @@
 global load_idt
 
+extern interrupt_handler 
+
 ; load_idt - loads the interrupt descriptor table
 ; stack: [esp + 4] the address of the interrupt descriptor table
 
@@ -8,7 +10,10 @@ load_idt:
   lidt [eax]
   ret
 
-%macro no_error_code_interrupt_handler %1
+; interrupt_handler_%1 - memory address for an interrupt handler
+
+
+%macro no_error_code_interrupt_handler 1
 global interrupt_handler_%1
 interrupt_handler_%1:
     push    dword 0                     ; push 0 as error code
@@ -16,12 +21,14 @@ interrupt_handler_%1:
     jmp     common_interrupt_handler    ; jump to the common handler
 %endmacro
 
-%macro error_code_interrupt_handler %1
+%macro error_code_interrupt_handler 1
 global interrupt_handler_%1
 interrupt_handler_%1:
     push    dword %1                    ; push the interrupt number
     jmp     common_interrupt_handler    ; jump to the common handler
 %endmacro
+
+; common_interrupt_handler - saves cpu state and calls c interrupt_handler
 
 common_interrupt_handler:
   ;save cpu state registers
@@ -38,3 +45,5 @@ common_interrupt_handler:
   pop ebp
   add esp, 8
   iret
+
+no_error_code_interrupt_handler 0
